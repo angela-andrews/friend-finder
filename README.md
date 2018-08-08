@@ -42,8 +42,30 @@ Server.js is the root of the application. In this file, you set the dependencies
 * Configure the app to use body parser. app.use() mounts the body parser middleware functions to parse json and urlencoded data. 
 	* [bodyParser.urlencoded](https://www.npmjs.com/package/body-parser#bodyparserurlencodedoptions)
 	* [bodyParser.json](https://www.npmjs.com/package/body-parser#bodyparserjsonoptions)
-* We've moved the routes to external files for modularity and separation of concerns. Require both the apiRoutes and htmlRoutes (minus the .html file extension). Append (app) at the end of each require to signify that express will be using these routes.
+* We've moved the routes to external files for modularity and separation of concerns. *Require* both the apiRoutes and htmlRoutes (minus the .html file extension). Append (app) at the end of each require to signify that express will be using these routes.
 * Configure the server to listen on the above mentioned port. Create console.log messages to inform the user where to access the app.
 
 
 ## Set up your **routing** files.
+**apiRoutes**
+* In the route files, you link your routes to the data file in the data folder. Create a variable and assign the require for the friends data file.
+* Write the export for the function that handles the app get and app post. 
+* * app.get() the friends file. Pass the data back in the res.json method. When the user visits the page, they will see the JSON data returned.
+* * app.post() the friends file. When the user fills out the survey, it gets pushed to an array. We're using req.body since we are using body parser.XXXXX
+
+**htmlRoutes**
+* Set a path variable and assign the path module to it.
+* Write the export for the function that handles the app get. There is no app.post, only get requests.
+* * app.get() for the /survey file 
+* * app.get() "*" if no other matching routes are found, direct to home.html.
+
+## JSON data
+**friends.js**
+* This file will hold the default friend data in an array. Create an array, var friendArray, with objects inside for each friend. In that object, set the following name: value pairs:
+* * name: "Some Name",
+* * image: "URL to some Image",
+* * q1: 5  //some number
+* * q2 throught q10, assign some number
+* export the array.
+
+
