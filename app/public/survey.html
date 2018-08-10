@@ -19,15 +19,9 @@
   <!-- Chosen -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-  <style>
-    .formControlDrop {
-      width: 25%;
-    }
+  <link rel="stylesheet" href="styles.css">
 
-    .labelFont {
-      font-size: 1.3em;
-    }
-  </style>
+  
 </head>
 
 <body>
@@ -219,7 +213,7 @@
           </div>
           <div class="modal-body">
             <h2 id="match-name"></h2>
-            <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+            <img id="match-img" src="https://scontent-lga3-1.cdninstagram.com/vp/a3a5c884feba2f89737a4e9c56b963e5/5BF2F4DE/t51.2885-15/e35/36938033_393756074482323_8982168644901404672_n.jpg" alt="my something">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -234,12 +228,9 @@
       $("#submit").on("click", function (event) {
         event.preventDefault();
 
-
-          // Create an object for the user"s data
-          var userData = 
-            {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
+          var userData = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
             scores: [
               $("#q1").val(),
               $("#q2").val(),
@@ -250,22 +241,30 @@
               $("#q7").val(),
               $("#q8").val(),
               $("#q9").val(),
-               $("#q10").val()
+              $("#q10").val()
               ] 
             };
           
-           // friendsData.push(userData)
-         // console.log(userData);
+          
+        // var result = userData.scores.map(Number);
+        //     userData.scores = result;
+        //   console.log(`userdata ${userData.name}`);
+        //   console.log(`userdata ${userData.photo}`);
+        //   console.log(`userdata ${userData.scores}`);
+        //   console.log(typeof userData.scores[3]);
+
 
           // AJAX post the data to the friends API.
-          $.post("/api/friends", userData,function(data){
-
+          $.post("/api/friends", userData)
+            .then(function(data){
+              //console.log(`${userData}`);
+              alert(`Adding New Friend...`);
               // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-              $("#match-name").text(data.name);
-              $("#match-img").attr("src", data.photo);
+              // $("#match-name").text(data.name);
+              // $("#match-img").attr("src", data.photo);
 
-              // Show the modal with the best match
-              $("#results-modal").modal("toggle");
+              // // Show the modal with the best match
+              // $("#results-modal").modal("toggle");
           });
            
 
@@ -273,7 +272,14 @@
         
     
     </script>
-
+<!-- <script src="../routing/apiRoutes.js"></script> -->
 </body>
 
 </html>
+<!--
+Photo by Thought Catalog on Unsplash
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@thoughtcatalog?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Thought Catalog"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Thought Catalog</span></a>
+Photo by Eye for Ebony on Unsplash
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@eyeforebony?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Eye for Ebony"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Eye for Ebony</span></a>
+
+-->
