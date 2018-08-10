@@ -8,26 +8,24 @@ var bodyParser = require('body-parser');
 var path = require('path');
 /*
 ================================
-Configure Express
+Configure Express app obj & port
 ================================
 */
 var app = express();
 var PORT = process.env.PORT || 8080;
 /*
 ================================
-Configure app to use body parser
+Body parser Middleware
 ================================
 */
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 /*
 ================================
-Express Static
+Express Static Middleware
 ================================
 */
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 /*
 ================================
 Require Routes

@@ -12,7 +12,7 @@ Module Exports
 */
 module.exports = function (app) {
     app.get("/api/friends", (req, res) => {
-        //returning back the data from friends.js
+        //returning back the data from friends.js as a a JSON response.
         res.json(friendsData);
 
     });
@@ -24,8 +24,8 @@ module.exports = function (app) {
         var totalDiff;
 
         console.log(newUser);
-        friendsData.push(newUser);
-        res.json(newUser);
+        friendsData.push(newUser);//push the new user in friendsData Array
+        res.json(newUser);//Send a JSON response.
 
 
         var bestMatch = {
