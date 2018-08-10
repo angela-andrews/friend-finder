@@ -22,12 +22,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 /*
 ================================
-Express Static Middleware
-================================
-*/
-app.use(express.static(path.join(__dirname, 'public')));
-/*
-================================
 Require Routes
 ================================
 */

@@ -244,31 +244,29 @@
               $("#q10").val()
               ] 
             };
-          
-          
-        // var result = userData.scores.map(Number);
-        //     userData.scores = result;
-        //   console.log(`userdata ${userData.name}`);
-        //   console.log(`userdata ${userData.photo}`);
-        //   console.log(`userdata ${userData.scores}`);
-        //   console.log(typeof userData.scores[3]);
-
-
+            console.log("add user", userData)
           // AJAX post the data to the friends API.
+          // $.post("/api/friends",userData, function(req, res){
+          //     var newUser = req.body;
+          //     console.log(newUser);
+          //     res.json(newUser);
+          //     alert(`Adding New Friend...`);
+          // });
           $.post("/api/friends", userData)
-            .then(function(data){
-              //console.log(`${userData}`);
+          .then(function(data){
+              console.log("add user", data)
               alert(`Adding New Friend...`);
-              // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-              // $("#match-name").text(data.name);
-              // $("#match-img").attr("src", data.photo);
 
-              // // Show the modal with the best match
-              // $("#results-modal").modal("toggle");
+              // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+              $("#match-name").text(data.name);
+              $("#match-img").attr("src", data.photo);
+
+              // Show the modal with the best match
+              $("#results-modal").modal("toggle");
           });
            
-
-            });
+});
+          
         
     
     </script>
